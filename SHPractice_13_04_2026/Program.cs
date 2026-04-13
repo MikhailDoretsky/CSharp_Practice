@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CSharp_Practice_13_04_2026
@@ -53,9 +54,223 @@ namespace CSharp_Practice_13_04_2026
 
         }
 
+        static void Task2()
+        {
+            int countindex = 0;
+            int[] arr = new int[10] { -1, 2, 3, -4, -13, 5, 1, -9, 5, 0 };
+
+            foreach (int i in arr)
+            {
+                if (i > 0)
+                {
+                    countindex += 1;
+
+                }
+
+            }
+
+            int[] newarr = new int[arr.Length];
+
+
+            for (int i = 0, j = 0; i < arr.Length;i++)
+            {
+                if (arr[i] < 0)
+                {
+                    newarr[j] = arr[i];
+                    j++;
+                }
+                
+
+            }
+
+
+            for (int i = 0, j = 1; j < countindex + 1 ;i++)
+            {
+                if (arr[i] > 0)
+                {
+                    newarr[newarr.Length - j] = arr[i];
+                    j++;
+                }
+
+
+            }
+       
+
+            arr = newarr;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine(arr[i]);
+            }
+            
+        }
+        
+        static void Task3()
+        {
+            int[] arr = new int[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            int count = 0;
+
+            Console.WriteLine("Enter your number to search: ");
+            int input = Convert.ToInt32(Console.ReadLine());
+
+
+            for (int i = 0; i < arr.Length;i++)
+            {
+                if (arr[i] == input)
+                {
+                    count ++;
+                }
+            }
+            Console.WriteLine($"Your number has been found {count} times\n\t");
+            Task3();
+
+        }
+
+        static void Task4()
+        {
+            int[,] OArr = 
+            { 
+                { 1, 2, 3 }, 
+                { 1, 2, 3 }, 
+                { 1, 2, 3 }, 
+                { 1, 2, 3 } 
+            };
+
+
+            int ALine = OArr.GetLength(0);
+            int AColumn = OArr.GetLength(1);
+
+            int[,] NArr = new int[AColumn, ALine];
+
+            for (int i = 0, j = 0; i < ALine;)
+            {
+                NArr[j, i] = OArr[i, j];
+                
+                j++;
+
+                if (j == AColumn)
+                {
+                    j = 0;
+          
+                    i++;
+           
+                    if (i == ALine) break;
+                    
+                }
+                
+            }
+            for (int Lin = 0, Col = 0; Lin < ALine;)
+            {
+                Console.WriteLine(NArr[Col, Lin]);
+
+                Lin++;
+                if (Lin == ALine)
+                {
+                    Lin = 0;
+                    
+                    Col++;
+                    Console.WriteLine("!");
+                }
+                
+                
+            }
+
+
+
+
+
+
+
+        }
+
+        static void Task5()
+        {
+           
+
+            List<string> Compass = new List<string> { "WN\t", "N\t", "NE\t", "E\t", "SE\t", "S\t", "SW\t", "W\t" };
+
+            string[,] A = new string[8, 8];
+
+            int L = A.GetLength(0);
+
+            int C = A.GetLength(1);
+
+            for (int i = 0,j = 0; i < L;)
+            {
+                j++;
+
+                if (j == C)
+                {
+                    j = 0;
+                    i++;
+                }
+
+                else if (i == 0 && j == 2)
+                {
+                    A[i, j] = Compass[0];
+                }
+                else if (i == 0 && j == 4)
+                {
+                    A[i, j] = Compass[1];
+                }
+                else if (i == 0 && j == 6)
+                {
+                    A[i, j] = Compass[2];
+                }
+
+                else if (i == 7 && j == 4)
+                {
+                    A[i, j] = Compass[5];
+                }
+
+                else if (i == 7 && j == 6)
+                {
+                    A[i, j] = Compass[4];
+                }
+                else if (i == 3 && j == 6)
+                {
+                    A[i, j] = Compass[5];
+                }
+
+                else if (i == 1 && j == 6)
+                {
+                    A[i, j] = Compass[6];
+                }
+                else if (i == 3 && j == 0)
+                {
+                    A[i, j] = Compass[7];
+                }
+                else
+                {
+                    A[i, j] = "+\t";
+                }
+
+                
+
+
+
+
+
+            }
+            for (int i = 0, j = 0; i < L;)
+            {
+
+                Console.Write(A[i, j]);
+                j++;
+
+                if (j == C)
+                {
+                    i++;
+                    j = 0;
+                    Console.WriteLine();
+                }
+            }
+
+        }
+
         static void Main(string[] args)
         {
-            Task1();
+            Task5();
+            
             Console.Read();
 
         }
