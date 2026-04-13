@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанные с этой сборкой.
-[assembly: AssemblyTitle("CSharp_Practice")]
+[assembly: AssemblyTitle("SHPractice_13_04_2026")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CSharp_Practice")]
+[assembly: AssemblyProduct("SHPractice_13_04_2026")]
 [assembly: AssemblyCopyright("Copyright ©  2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID представляет идентификатор typelib, если этот проект доступен из модели COM
-[assembly: Guid("6fda0be2-99ff-465c-a7b2-dccce5e4da49")]
+[assembly: Guid("c2d0a34d-2eb2-49b1-9175-6b28870b6137")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //

@@ -16,15 +16,15 @@ namespace CSharp_Practice_13_04_2026
 
             foreach (int i in arr)
             {
-                if (int == 0)
+                if (i == 0)
                 {
                     indexes.Add(i);
-                    
+
                 }
 
             }
 
-            int[] newarr = new int[arr.Length - indexes.Count]
+            int[] newarr = new int[arr.Length - indexes.Count];
 
             for (int j = 0; j < arr.Length; j++)
             {
@@ -32,7 +32,7 @@ namespace CSharp_Practice_13_04_2026
                 {
                     newarr[j] = arr[j];
                 }
-                
+
             }
             Console.WriteLine(newarr);
 
@@ -43,6 +43,6 @@ namespace CSharp_Practice_13_04_2026
             Task1();
 
 
-        }  
+        }
     }
 }
