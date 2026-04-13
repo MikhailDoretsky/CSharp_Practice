@@ -26,22 +26,29 @@ namespace CSharp_Practice_13_04_2026
 
             int[] newarr = new int[arr.Length - indexes.Count];
 
-            for (int j = 0; j < arr.Length; j++)
+
+            for (int i = 0, j = 0; i < arr.Length;i++)
             {
-                if (arr[j] != 0)
+                if (arr[i] != 0)
                 {
-                    newarr[j] = arr[j];
+                    newarr[j] = arr[i];
+                    j++;
                 }
+                
 
             }
-            Console.WriteLine(newarr);
+            for (int i = 0; i < newarr.Length; i++)
+            {
+                Console.WriteLine(newarr[i]);
+            }
+            
 
         }
 
         static void Main(string[] args)
         {
             Task1();
-
+            Console.Read();
 
         }
     }
