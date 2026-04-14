@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -184,89 +185,24 @@ namespace CSharp_Practice_13_04_2026
 
         static void Task5()
         {
-           
+            int[] A = new int[5];
+            int[,] = new int[4, 3];
 
-            List<string> Compass = new List<string> { "WN\t", "N\t", "NE\t", "E\t", "SE\t", "S\t", "SW\t", "W\t" };
-
-            string[,] A = new string[8, 8];
-
-            int L = A.GetLength(0);
-
-            int C = A.GetLength(1);
-
-            for (int i = 0,j = 0; i < L;)
+            for (int i = 0; i < A.Length; i++)
             {
-                j++;
+                Console.Write($"\rВведите числое под индексом {i}: ");
+                int input = Convert.ToInt32(Console.Read());
 
-                if (j == C)
-                {
-                    j = 0;
-                    i++;
-                }
-
-                else if (i == 0 && j == 2)
-                {
-                    A[i, j] = Compass[0];
-                }
-                else if (i == 0 && j == 4)
-                {
-                    A[i, j] = Compass[1];
-                }
-                else if (i == 0 && j == 6)
-                {
-                    A[i, j] = Compass[2];
-                }
-
-                else if (i == 7 && j == 4)
-                {
-                    A[i, j] = Compass[5];
-                }
-
-                else if (i == 7 && j == 6)
-                {
-                    A[i, j] = Compass[4];
-                }
-                else if (i == 3 && j == 6)
-                {
-                    A[i, j] = Compass[5];
-                }
-
-                else if (i == 1 && j == 6)
-                {
-                    A[i, j] = Compass[6];
-                }
-                else if (i == 3 && j == 0)
-                {
-                    A[i, j] = Compass[7];
-                }
-                else
-                {
-                    A[i, j] = "+\t";
-                }
-
-                
-
-
-
-
+                A[i] = input;
+            }
+            for (int i = 0; i < A.Length;)
+            {
+                Console.Write(A[i]);
+                i++;
 
             }
-            for (int i = 0, j = 0; i < L;)
-            {
-
-                Console.Write(A[i, j]);
-                j++;
-
-                if (j == C)
-                {
-                    i++;
-                    j = 0;
-                    Console.WriteLine();
-                }
-            }
-
         }
-
+       
         static void Main(string[] args)
         {
             Task5();
