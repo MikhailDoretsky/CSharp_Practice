@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Threading;
 
 namespace SHPractice_24_04_2026
 {
@@ -25,7 +25,7 @@ namespace SHPractice_24_04_2026
             int NEven = 0;
             int He = 0;
 
-            for (int i = 0, j = 0; i < A.Length; i++)
+            for (int i = 0; i < A.Length; i++)
             {
                 if (A[i] % 2 == 0)
                 {
@@ -53,8 +53,47 @@ namespace SHPractice_24_04_2026
         {
             int[] Arr = new int[10];
 
+            int Time = 100;
+            string Dot = " ";
+            Console.Write("Введите значение: ");
+            int U = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
+
+            int Result = 0;
+
             var rand = new Random(0);
+            
+            for (int i = 0; i < Arr.Length;i++)
+            {
+                Arr[i] = rand.Next(100);
+                Console.Write(Arr[i] + ",");
+
+            }
+
+            Console.WriteLine();
+            for (int j = 0; j < Arr.Length; j++)
+            {
+                if (Arr[j] < U)
+                {
+                    Result += 1;
+             
+                }
+                if (j == Arr.Length - 1)
+                {
+                
+                    Dot = ".";
+                }
+                Thread.Sleep(Time);
+                Console.Write("\rЗначений в массиве меньше вашего: " + Result + Dot);
+            }
+            Console.ReadLine();
+            
         }
+        static void Task3()
+        {
+
+        }
+
         static void Main(string[] args)
         {
             Task2();
