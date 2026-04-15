@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -408,9 +410,77 @@ namespace CSharp_Practice_13_04_2026
             }
 
         }
+
+        static void Task3_Module_2()
+        {
+            string[,] A = new string[,]
+            {
+                {"A", "B", "C", "D", "E", "F", "G" },
+                {"H", "I", "K", "L", "M", "N", "0" },
+                {"O", "P", "Q", "R", "S", "T", "U" },
+                {"V", "W", "X", "Y", "Z","0","0" }
+            };
+
+
+            Console.WriteLine("Введите ключь: ");
+            int input = Convert.ToInt32(Console.ReadLine());
+
+            int Line = A.GetLength(0);
+            int Column = A.GetLength(1);
+
+            int NewLine = input * Line;
+            int NewColumn = input * Column;
+
+            string[,] NA = new string[NewLine,NewColumn];
+
+            for (int i = 0, j = 0; i < NewLine;)
+            {
+                NA[i, j] = "0";
+                
+                j++;
+                if (j == NewColumn)
+                {
+                    i++;
+                    j = 0;
+                    
+                }
+            }
+            
+            for (int d = 0, b = 0,i = 0,j = input; i < NewLine - input;)
+            {
+                NA[i, j] = A[d, b];
+                j += input;
+                b++;
+                if (j == NewColumn - input)
+                {
+                    i += input;
+                    d++;
+                    j = input;
+                    b = 0;
+                    
+                }
+            }
+            for (int i = 0, j = 0; i < NewLine;)
+            {
+                
+                Console.Write(NA[i, j], " ");
+                j++;
+                if (j == NewColumn)
+                {
+                    i++;
+                    j = 0;
+                    Console.WriteLine();
+                }
+            }
+
+
+
+        }
+
+
         static void Main(string[] args)
         {
-            Task2_Module_2();
+            Task3_Module_2();
 
 
             Console.Read();
