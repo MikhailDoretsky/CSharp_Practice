@@ -477,6 +477,144 @@ namespace CSharp_Practice_13_04_2026
 
         }
 
+        static void Task4_Module_2()
+        {
+            var rand = new Random();
+
+            int[,] Matrix1 = new int[2, 3];
+
+            int[,] Matrix2 = new int[2, 3];
+
+           
+            int Line1 = Matrix1.GetLength(0);
+            int Column1 = Matrix1.GetLength(1);
+
+            int Line2 = Matrix2.GetLength(0);
+            int Column2 = Matrix2.GetLength(1);
+
+            int[,] ResultMat = new int[Line1, Column1];
+
+            for (int i = 0, j = 0; i < Line1;)
+            {
+                Matrix1[i, j] = rand.Next(50);
+                Console.Write(Matrix1[i, j] + " ");
+
+                j++;
+                if (j == Column1)
+                {
+                    i++;
+                    j = 0;
+                    Console.WriteLine();
+                }
+            }
+            Console.WriteLine("Матрица 1");
+            Console.WriteLine();
+
+            for (int i = 0, j = 0; i < Line2;)
+            {
+                Matrix2[i, j] = rand.Next(50);
+                Console.Write(Matrix2[i, j] + " ");
+
+                j++;
+                if (j == Column2)
+                {
+                    i++;
+                    j = 0;
+                    Console.WriteLine();
+                }
+            }
+            Console.WriteLine("Матрица 2");
+            Console.WriteLine();
+
+
+            Console.Write("Введите операцию: ");
+            string Input = Console.ReadLine();
+
+
+            if (Input == "+")
+            {
+                for (int i = 0, j = 0; i < Line2;)
+                {
+                    ResultMat[i, j] = Matrix1[i, j] + Matrix2[i, j];
+
+                    Console.Write(ResultMat[i, j] + " ");
+
+                    j++;
+                    if (j == Column2)
+                    {
+                        i++;
+                        j = 0;
+                        Console.WriteLine();
+                    }
+                }
+                Console.WriteLine("Результат");
+                Console.WriteLine();
+            }
+            else if (Input == "-")
+            {
+                for (int i = 0, j = 0; i < Line2;)
+                {
+                    ResultMat[i, j] = Matrix1[i, j] - Matrix2[i, j];
+
+                    Console.Write(ResultMat[i, j] + " ");
+
+                    j++;
+                    if (j == Column2)
+                    {
+                        i++;
+                        j = 0;
+                        Console.WriteLine();
+                    }
+                }
+                Console.WriteLine("Результат");
+                Console.WriteLine();
+            }
+            else if (Input == "/")
+            {
+                for (int i = 0, j = 0; i < Line2;)
+                {
+                    ResultMat[i, j] = Matrix1[i, j] / Matrix2[i, j];
+
+                    Console.Write(ResultMat[i, j] + " ");
+
+                    j++;
+                    if (j == Column2)
+                    {
+                        i++;
+                        j = 0;
+                        Console.WriteLine();
+                    }
+                }
+                Console.WriteLine("Результат");
+                Console.WriteLine();
+            }
+            else if (Input == "*")
+            {
+                for (int i = 0, j = 0; i < Line2;)
+                {
+                    ResultMat[i, j] = Matrix1[i, j] * Matrix2[i, j];
+
+                    Console.Write(ResultMat[i, j] + " ");
+
+                    j++;
+                    if (j == Column2)
+                    {
+                        i++;
+                        j = 0;
+                        Console.WriteLine();
+                    }
+                }
+                Console.WriteLine("Результат");
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("Операция " + "'" + Input + "'" + "не поддерживаеться");
+                Task4_Module_2();
+            }
+
+        }
+
         static void Task5_Module_2()
         {
             int Sum = 0;
@@ -505,9 +643,41 @@ namespace CSharp_Practice_13_04_2026
             }
         }
 
+        static void Task6_Module_2()
+        {
+            Console.WriteLine();
+
+            //string input = Console.ReadLine();
+            string input = "today is a good day for walking. i will try to walk near the sea";
+
+            StringBuilder ns = new StringBuilder(input);
+            char Upper = char.ToUpper(input[0]);
+         
+            ns[0] = Upper;
+            
+            input = ns.ToString();
+            Console.WriteLine(input);
+        }
+
+        static void Task7_Module_2()
+        {
+            Console.WriteLine();
+
+            //string InputStr = Console.ReadLine();
+            string InputStr = "Well Well";
+            string TabuWord = Console.ReadLine();
+
+            int index = InputStr.IndexOf(TabuWord);
+            Console.WriteLine(index);
+            
+            
+            StringBuilder NewString = new StringBuilder();
+            
+        }
+
         static void Main(string[] args)
         {
-            Task5_Module_2();
+            Task4_Module_2();
             Console.Read();
         }
     
