@@ -477,14 +477,39 @@ namespace CSharp_Practice_13_04_2026
 
         }
 
+        static void Task5_Module_2()
+        {
+            int Sum = 0;
+            Console.WriteLine("Введите первое значение: ");
+            int Num1 = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Введите второе значение: ");
+            int Num2 = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Введите операцию: ");
+            string Input = Console.ReadLine();
+
+            if (Input == "+")
+            {
+                Sum = Num1 + Num2;
+                Console.WriteLine(Sum);
+            }
+            else if (Input == "-")
+            {
+                Sum = Num1 - Num2;
+                Console.WriteLine(Sum);
+            }
+            else
+            {
+                Console.WriteLine("Операция " + "'" + Input + "'" + "не поддерживаеться");
+            }
+        }
 
         static void Main(string[] args)
         {
-            Task3_Module_2();
-
-
+            Task5_Module_2();
             Console.Read();
-
         }
+    
     }
 }
