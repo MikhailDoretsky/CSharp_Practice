@@ -6,7 +6,7 @@ namespace SHPractice_24_04_2026
     internal class Program
     {
 
-        static void Task1()
+        static void Task1_Module2()
         {
             int[] A = new int[10];
 
@@ -49,7 +49,7 @@ namespace SHPractice_24_04_2026
             Console.WriteLine("Не чётных: " + NEven);
             Console.WriteLine("Различных с вашим: " + Sum);
         }
-        static void Task2()
+        static void Task2_Module2()
         {
             int[] Arr = new int[10];
 
@@ -89,14 +89,166 @@ namespace SHPractice_24_04_2026
             Console.ReadLine();
             
         }
-        static void Task3()
+        static void Task3_Module2()
         {
 
+
+        }
+        static void Task4_Module2()
+        {
+          
+            int[] array1 = { 1, 2, 3, 4, 5, 6, 7, 2, 3 };
+            int[] array2 = { 3, 4, 5, 8, 9, 10, 3, 4 };
+
+            Console.WriteLine("Первый массив: " + string.Join(", ", array1));
+            Console.WriteLine("Второй массив: " + string.Join(", ", array2));
+
+           
+            int[] commonElements = array1.Intersect(array2).ToArray();
+
+            Console.WriteLine("Общие элементы без повторений: " + string.Join(", ", commonElements));
+            Console.WriteLine("Количество общих элементов: " + commonElements.Length);
+        }
+
+        static void Task5_Module2()
+        {
+         
+            int[,] matrix = {
+            { 5, 12, 8, 3 },
+            { 19, 2, 7, 11 },
+            { 4, 15, 1, 9 }
+        };
+
+            Console.WriteLine("Двумерный массив:");
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    Console.Write(matrix[i, j] + "\t");
+                }
+                Console.WriteLine();
+            }
+
+            int minValue = matrix[0, 0];
+            int maxValue = matrix[0, 0];
+
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    if (matrix[i, j] < minValue)
+                        minValue = matrix[i, j];
+                    if (matrix[i, j] > maxValue)
+                        maxValue = matrix[i, j];
+                }
+            }
+
+            Console.WriteLine($"Минимальное значение: {minValue}");
+            Console.WriteLine($"Максимальное значение: {maxValue}");
+        }
+       
+        static void Task6_Module2()
+        {
+           
+            string sentence = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(sentence))
+            {
+                Console.WriteLine("Вы не ввели предложение.");
+                return;
+            }
+
+           
+            string[] words = sentence.Split(new char[] { ' ', '\t', '\n', '\r' },
+                                            StringSplitOptions.RemoveEmptyEntries);
+
+            Console.WriteLine($"Количество слов в предложении: {words.Length}");
+        }
+       
+        static void Task7_Module2()
+        {
+           
+          
+        }
+        
+        static void Task8_Module2()
+        {
+            Console.WriteLine("=== Задание 8 ===");
+
+            Console.Write("Введите предложение: ");
+            string sentence = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(sentence))
+            {
+                Console.WriteLine("Вы не ввели предложение.");
+                return;
+            }
+
+           
+            char[] vowels = { 'а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я',
+                          'a', 'e', 'i', 'o', 'u', 'y' };
+
+            int vowelCount = 0;
+            string lowerSentence = sentence.ToLower();
+
+            foreach (char c in lowerSentence)
+            {
+                if (Array.IndexOf(vowels, c) != -1)
+                {
+                    vowelCount++;
+                }
+            }
+
+            Console.WriteLine($"Количество гласных букв в предложении: {vowelCount}");
+        }
+      
+        static void Task9_Module2()
+        {
+
+            Console.Write("Введите исходную строку: ");
+            string text = Console.ReadLine();
+
+            Console.Write("Введите подстроку для поиска: ");
+            string substring = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(text) || string.IsNullOrEmpty(substring))
+            {
+                Console.WriteLine("Строка или подстрока не могут быть пустыми.");
+                return;
+            }
+
+            int count = 0;
+            int index = 0;
+
+            while ((index = text.IndexOf(substring, index, StringComparison.OrdinalIgnoreCase)) != -1)
+            {
+                count++;
+                index += substring.Length;
+            }
+
+            Console.WriteLine($"Подстрока \"{substring}\" встречается {count} раз(а)");
+
+          
+            Console.WriteLine("\nПример из задания:");
+            string exampleText = "Why she had to go. I don't know, she wouldn't say";
+            string exampleSubstring = "she";
+            int exampleCount = 0;
+            int exampleIndex = 0;
+
+            while ((exampleIndex = exampleText.IndexOf(exampleSubstring, exampleIndex, StringComparison.OrdinalIgnoreCase)) != -1)
+            {
+                exampleCount++;
+                exampleIndex += exampleSubstring.Length;
+            }
+
+            Console.WriteLine($"Исходная строка: \"{exampleText}\"");
+            Console.WriteLine($"Подстрока для поиска: \"{exampleSubstring}\"");
+            Console.WriteLine($"Результат поиска: {exampleCount}");
         }
 
         static void Main(string[] args)
         {
-            Task2();
+            Task3_Module2();
         }
     }
 }
