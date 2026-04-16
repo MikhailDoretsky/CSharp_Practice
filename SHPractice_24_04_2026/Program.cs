@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 
+
 namespace SHPractice_24_04_2026
 {
     internal class Program
@@ -91,7 +92,65 @@ namespace SHPractice_24_04_2026
         }
         static void Task3_Module2()
         {
+            int[] Arr = new int[13] {7,6,5,1,2,3,7,6,5,1,7,6,5};
+            int[] Nums = new int[3];
 
+            var rand = new Random(0);
+
+            int Result = 0;
+            bool res = true;
+            while (res)
+            {
+                Console.Write(":  ");
+                int input = Convert.ToInt32(Console.ReadLine());
+
+                if (input / 100 != 0)
+                {
+                    for (int i = 0, j = 0; i < Arr.Length; i++)
+                    {
+                        //Arr[i] = rand.Next(100);
+
+
+
+                        if (j == 0)
+                        {
+                            Nums[j] = input / 100;
+                            j++;
+                        }
+                        if (j == 1)
+                        {
+                            Nums[j] = (input % 100) / 10;
+                            j++;
+                        }
+
+                        if (j == 2)
+                        {
+                            Nums[j] = input % 10;
+                            j++;
+                        }
+                        Console.Write(Arr[i] + " ");
+
+                    }
+                    Console.WriteLine();
+                    for (int i = 0; i < Arr.Length; i++)
+                    {
+                        if (Arr[i] == Nums[0] && Arr[i + 1] == Nums[1] && Arr[i + 2] == Nums[2])
+                        {
+                            Result += 1;
+
+                        }
+                    }
+                    Console.WriteLine(Result);
+                    Console.ReadLine();
+                    res = false;
+                }
+                else
+                {
+                    Console.Write("Ваше число не трех значное");
+                    continue;
+
+                }
+            }            
 
         }
         static void Task4_Module2()
@@ -104,10 +163,10 @@ namespace SHPractice_24_04_2026
             Console.WriteLine("Второй массив: " + string.Join(", ", array2));
 
            
-            int[] commonElements = array1.Intersect(array2).ToArray();
+            //int[] commonElements = array1.Intersect(array2).ToArray();
 
-            Console.WriteLine("Общие элементы без повторений: " + string.Join(", ", commonElements));
-            Console.WriteLine("Количество общих элементов: " + commonElements.Length);
+            //Console.WriteLine("Общие элементы без повторений: " + string.Join(", ", commonElements));
+            //Console.WriteLine("Количество общих элементов: " + commonElements.Length);
         }
 
         static void Task5_Module2()
@@ -167,13 +226,37 @@ namespace SHPractice_24_04_2026
        
         static void Task7_Module2()
         {
-           
-          
+
+            Console.Write("Введите предложение: ");
+            string sentence = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(sentence))
+            {
+                Console.WriteLine("Вы не ввели предложение.");
+                return;
+            }
+
+            string[] words = sentence.Split(new char[] { ' ', '\t', '\n', '\r' },
+                                            StringSplitOptions.RemoveEmptyEntries);
+
+            Console.Write("Результат переворота: ");
+            for (int i = 0; i < words.Length; i++)
+            {
+                char[] charArray = words[i].ToCharArray();
+                Array.Reverse(charArray);
+                string reversedWord = new string(charArray);
+                Console.Write(reversedWord);
+
+                if (i < words.Length - 1)
+                    Console.Write(" ");
+            }
+            Console.WriteLine();
+
         }
         
         static void Task8_Module2()
         {
-            Console.WriteLine("=== Задание 8 ===");
+            
 
             Console.Write("Введите предложение: ");
             string sentence = Console.ReadLine();
