@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Threading;
+using System.Struct;
+using System.Security.Cryptography.X509Certificates;
 
 
 namespace SHPractice_24_04_2026
@@ -329,9 +332,36 @@ namespace SHPractice_24_04_2026
             Console.WriteLine($"Результат поиска: {exampleCount}");
         }
 
+       
+ public class SevenMiracles
+        {
+            protected string MakeDate;
+            protected string Name;
+        
+            public SevenMiracles(string value1, string value2)
+            {
+                string MakeDate = value1;
+                string Name = value2;
+            }
+            public void Print() 
+            { 
+                Console.WriteLine()
+            }
+
+        }
+public class Start : SevenMiracles
+        {
+            public void Task1_ModuleStuck()
+            {
+                var One = new SevenMiracles("3rd century BC", "Pyramid of Cheops")
+                One.Print();
+            }
+        }
+       
         static void Main(string[] args)
         {
-            Task3_Module2();
+            Start a = new Start();
+            a.Task1_ModuleStuck();
         }
     }
 }
