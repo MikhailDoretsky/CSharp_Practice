@@ -9,6 +9,105 @@ namespace SHPractice_24_04_2026
 {
     internal class Program
     {
+        enum ArticleType
+        {
+            Electronics,
+            Clothing,
+            Food,
+            Books,
+            Other
+        }
+
+        enum ClientType
+        {
+            Regular,
+            Gold,
+            Platinum,
+            VIP
+        }
+
+        enum PayType
+        {
+            Cash,
+            Card,
+            Online,
+            Installment
+        }
+
+        struct Article
+        {
+            public int Code;
+            public string Name;
+            public double Price;
+            public ArticleType Type;
+        }
+
+        struct Client
+        {
+            public int Code;
+            public string FullName;
+            public string Address;
+            public string Phone;
+            public int OrderCount;
+            public double TotalOrderSum;
+            public ClientType Type;
+        }
+
+        struct RequestItem
+        {
+            public Article Product;
+            public int Quantity;
+        }
+
+        struct Request
+        {
+            public int OrderCode;
+            public Client Client;
+            public DateTime OrderDate;
+            public RequestItem[] Items;
+            public PayType PaymentType;
+
+            public double TotalSum
+            {
+                get
+                {
+                    double sum = 0;
+                    foreach (var item in Items)
+                    {
+                        sum += item.Product.Price * item.Quantity;
+                    }
+                    return sum;
+                }
+            }
+        }
+
+        class Student
+        {
+            public string LastName;
+            public string FirstName;
+            public string Patronymic;
+            public string Group;
+            public int Age;
+            private int[][] grades;
+
+            public Student(string lastName, string firstName, string patronymic, string group, int age)
+            {
+                LastName = lastName;
+                FirstName = firstName;
+                Patronymic = patronymic;
+                Group = group;
+                Age = age;
+                grades = new int[3][];
+                grades[0] = new int[0];
+                grades[1] = new int[0];
+                grades[2] = new int[0];
+            }
+
+
+
+
+
+
 
         static void Task1_Module2()
         {
@@ -332,6 +431,7 @@ namespace SHPractice_24_04_2026
             Console.WriteLine($"Результат поиска: {exampleCount}");
         }
 
+<<<<<<< HEAD
        
  public class SevenMiracles
         {
@@ -358,6 +458,359 @@ public class Start : SevenMiracles
             }
         }
        
+=======
+        static void Task1_Module3()
+        {
+           
+            
+            Console.WriteLine("=== Задание 1: Структура Article ===\n");
+
+            Article article = new Article
+            {
+                Code = 101,
+                Name = "Ноутбук",
+                Price = 1500.99,
+                Type = ArticleType.Electronics
+            };
+
+            Console.WriteLine($"Код товара: {article.Code}");
+            Console.WriteLine($"Название: {article.Name}");
+            Console.WriteLine($"Цена: {article.Price:C2}");
+            Console.WriteLine($"Тип: {article.Type}");
+            Console.WriteLine();
+        }
+
+
+        public void SetProgrammingGrades(int[] programmingGrades)
+        {
+            grades[0] = programmingGrades;
+        }
+
+        public void SetAdministrationGrades(int[] administrationGrades)
+        {
+            grades[1] = administrationGrades;
+        }
+
+        public void SetDesignGrades(int[] designGrades)
+        {
+            grades[2] = designGrades;
+        }
+
+        public int[] GetProgrammingGrades()
+        {
+            return grades[0];
+        }
+
+        public int[] GetAdministrationGrades()
+        {
+            return grades[1];
+        }
+
+        public int[] GetDesignGrades()
+        {
+            return grades[2];
+        }
+
+        public double GetAverageProgrammingGrade()
+        {
+            if (grades[0].Length == 0) return 0;
+            double sum = 0;
+            foreach (int grade in grades[0]) sum += grade;
+            return sum / grades[0].Length;
+        }
+
+        public double GetAverageAdministrationGrade()
+        {
+            if (grades[1].Length == 0) return 0;
+            double sum = 0;
+            foreach (int grade in grades[1]) sum += grade;
+            return sum / grades[1].Length;
+        }
+
+        public double GetAverageDesignGrade()
+        {
+            if (grades[2].Length == 0) return 0;
+            double sum = 0;
+            foreach (int grade in grades[2]) sum += grade;
+            return sum / grades[2].Length;
+        }
+
+        public double GetOverallAverage()
+        {
+            double total = 0;
+            int count = 0;
+            for (int i = 0; i < 3; i++)
+            {
+                foreach (int grade in grades[i])
+                {
+                    total += grade;
+                    count++;
+                }
+            }
+            return count == 0 ? 0 : total / count;
+        }
+
+        public void PrintInfo()
+        {
+            Console.WriteLine($"Студент: {LastName} {FirstName} {Patronymic}");
+            Console.WriteLine($"Группа: {Group}, Возраст: {Age}");
+            Console.WriteLine($"Средний балл по программированию: {GetAverageProgrammingGrade():F2}");
+            Console.WriteLine($"Средний балл по администрированию: {GetAverageAdministrationGrade():F2}");
+            Console.WriteLine($"Средний балл по дизайну: {GetAverageDesignGrade():F2}");
+            Console.WriteLine($"Общий средний балл: {GetOverallAverage():F2}");
+        }
+
+
+   
+        static void Task1_Module3()
+        {
+            Console.WriteLine("=== Задание 1: Структура Article ===\n");
+
+            Article article = new Article
+            {
+                Code = 101,
+                Name = "Ноутбук",
+                Price = 1500.99,
+                Type = ArticleType.Electronics
+            };
+
+            Console.WriteLine($"Код товара: {article.Code}");
+            Console.WriteLine($"Название: {article.Name}");
+            Console.WriteLine($"Цена: {article.Price:C2}");
+            Console.WriteLine($"Тип: {article.Type}");
+            Console.WriteLine();
+        }
+
+        static void Task2_Module3()
+        {
+            Console.WriteLine("=== Задание 2: Структура Client ===\n");
+
+            Client client = new Client
+            {
+                Code = 1001,
+                FullName = "Иванов Иван Иванович",
+                Address = "ул. Ленина, д. 10, кв. 5",
+                Phone = "+7 (999) 123-45-67",
+                OrderCount = 5,
+                TotalOrderSum = 15000.50,
+                Type = ClientType.Gold
+            };
+
+            Console.WriteLine($"Код клиента: {client.Code}");
+            Console.WriteLine($"ФИО: {client.FullName}");
+            Console.WriteLine($"Адрес: {client.Address}");
+            Console.WriteLine($"Телефон: {client.Phone}");
+            Console.WriteLine($"Количество заказов: {client.OrderCount}");
+            Console.WriteLine($"Общая сумма заказов: {client.TotalOrderSum:C2}");
+            Console.WriteLine($"Тип клиента: {client.Type}");
+            Console.WriteLine();
+        }
+
+        static void Task3_Module3()
+        {
+            Console.WriteLine("=== Задание 3: Структура RequestItem ===\n");
+
+            Article product = new Article
+            {
+                Code = 101,
+                Name = "Ноутбук",
+                Price = 1500.99,
+                Type = ArticleType.Electronics
+            };
+
+            RequestItem requestItem = new RequestItem
+            {
+                Product = product,
+                Quantity = 3
+            };
+
+            Console.WriteLine($"Товар: {requestItem.Product.Name}");
+            Console.WriteLine($"Код товара: {requestItem.Product.Code}");
+            Console.WriteLine($"Цена за единицу: {requestItem.Product.Price:C2}");
+            Console.WriteLine($"Количество: {requestItem.Quantity}");
+            Console.WriteLine($"Общая стоимость: {requestItem.Product.Price * requestItem.Quantity:C2}");
+            Console.WriteLine();
+        }
+
+        static void Task4_Module3()
+        {
+            Console.WriteLine("=== Задание 4: Структура Request ===\n");
+
+            Article product1 = new Article
+            {
+                Code = 101,
+                Name = "Ноутбук",
+                Price = 1500.99,
+                Type = ArticleType.Electronics
+            };
+
+            Article product2 = new Article
+            {
+                Code = 102,
+                Name = "Футболка",
+                Price = 29.99,
+                Type = ArticleType.Clothing
+            };
+
+            Client client = new Client
+            {
+                Code = 1001,
+                FullName = "Иванов Иван Иванович",
+                Address = "ул. Ленина, д. 10, кв. 5",
+                Phone = "+7 (999) 123-45-67",
+                OrderCount = 0,
+                TotalOrderSum = 0,
+                Type = ClientType.Gold
+            };
+
+            RequestItem[] items = new RequestItem[]
+            {
+            new RequestItem { Product = product1, Quantity = 1 },
+            new RequestItem { Product = product2, Quantity = 2 }
+            };
+
+            Request request = new Request
+            {
+                OrderCode = 5001,
+                Client = client,
+                OrderDate = DateTime.Now,
+                Items = items,
+                PaymentType = PayType.Card
+            };
+
+            Console.WriteLine($"Код заказа: {request.OrderCode}");
+            Console.WriteLine($"Клиент: {request.Client.FullName}");
+            Console.WriteLine($"Дата заказа: {request.OrderDate}");
+            Console.WriteLine($"Форма оплаты: {request.PaymentType}");
+            Console.WriteLine("Заказанные товары:");
+            foreach (var item in request.Items)
+            {
+                Console.WriteLine($"  - {item.Product.Name}: {item.Quantity} шт. по {item.Product.Price:C2}");
+            }
+            Console.WriteLine($"Сумма заказа (вычисляемое свойство): {request.TotalSum:C2}");
+            Console.WriteLine();
+        }
+
+        static void Task5_Module3()
+        {
+            Console.WriteLine("=== Задание 5: Перечисление ArticleType ===\n");
+
+            Console.WriteLine("Типы товаров:");
+            foreach (ArticleType type in Enum.GetValues(typeof(ArticleType)))
+            {
+                Console.WriteLine($"  {type}");
+            }
+            Console.WriteLine();
+
+            Article article = new Article
+            {
+                Code = 101,
+                Name = "Ноутбук",
+                Price = 1500.99,
+                Type = ArticleType.Electronics
+            };
+
+            Console.WriteLine($"Товар: {article.Name}, Тип: {article.Type}");
+            Console.WriteLine();
+        }
+
+        static void Task6_Module3()
+        {
+            Console.WriteLine("=== Задание 6: Перечисление ClientType ===\n");
+
+            Console.WriteLine("Типы клиентов:");
+            foreach (ClientType type in Enum.GetValues(typeof(ClientType)))
+            {
+                Console.WriteLine($"  {type}");
+            }
+            Console.WriteLine();
+
+            Client client = new Client
+            {
+                Code = 1001,
+                FullName = "Иванов Иван Иванович",
+                Address = "ул. Ленина, д. 10, кв. 5",
+                Phone = "+7 (999) 123-45-67",
+                OrderCount = 0,
+                TotalOrderSum = 0,
+                Type = ClientType.Platinum
+            };
+
+            Console.WriteLine($"Клиент: {client.FullName}, Тип: {client.Type}");
+            Console.WriteLine();
+        }
+
+        static void Task7_Module3()
+        {
+            Console.WriteLine("=== Задание 7: Перечисление PayType ===\n");
+
+            Console.WriteLine("Формы оплаты:");
+            foreach (PayType type in Enum.GetValues(typeof(PayType)))
+            {
+                Console.WriteLine($"  {type}");
+            }
+            Console.WriteLine();
+
+            Article product = new Article
+            {
+                Code = 101,
+                Name = "Ноутбук",
+                Price = 1500.99,
+                Type = ArticleType.Electronics
+            };
+
+            Client client = new Client
+            {
+                Code = 1001,
+                FullName = "Иванов Иван Иванович",
+                Address = "ул. Ленина, д. 10, кв. 5",
+                Phone = "+7 (999) 123-45-67",
+                OrderCount = 0,
+                TotalOrderSum = 0,
+                Type = ClientType.Gold
+            };
+
+            RequestItem[] items = new RequestItem[]
+            {
+            new RequestItem { Product = product, Quantity = 1 }
+            };
+
+            Request request = new Request
+            {
+                OrderCode = 5001,
+                Client = client,
+                OrderDate = DateTime.Now,
+                Items = items,
+                PaymentType = PayType.Online
+            };
+
+            Console.WriteLine($"Заказ №{request.OrderCode}");
+            Console.WriteLine($"Форма оплаты: {request.PaymentType}");
+            Console.WriteLine($"Сумма: {request.TotalSum:C2}");
+            Console.WriteLine();
+        }
+
+        static void Task8_Module3()
+        {
+            Console.WriteLine("=== Задание 8: Класс Student ===\n");
+
+            Student student = new Student("Петров", "Петр", "Петрович", "Группа ИС-31", 20);
+
+            student.SetProgrammingGrades(new int[] { 10, 9, 8, 10, 9 });
+            student.SetAdministrationGrades(new int[] { 8, 7, 9, 8 });
+            student.SetDesignGrades(new int[] { 9, 10, 9, 10, 10, 9 });
+
+            Console.WriteLine("Массив оценок по программированию: " + string.Join(", ", student.GetProgrammingGrades()));
+            Console.WriteLine("Массив оценок по администрированию: " + string.Join(", ", student.GetAdministrationGrades()));
+            Console.WriteLine("Массив оценок по дизайну: " + string.Join(", ", student.GetDesignGrades()));
+            Console.WriteLine();
+
+            student.PrintInfo();
+            Console.WriteLine();
+        }
+
+
+>>>>>>> ff7eaccf15952ddf38eb3f1cd79bc9fe98229943
         static void Main(string[] args)
         {
             Start a = new Start();
